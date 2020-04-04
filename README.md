@@ -141,7 +141,5 @@ twitter:@isch1zo
 # Thanks:
 
 Many Thanx s0md3v for goop, very good job! https://github.com/s0md3v/goop
+
 Many Thanx M3n0sD0n4ld for uDork my inspire script https://github.com/m3n0sd0n4ld/uDork
-
-
-
