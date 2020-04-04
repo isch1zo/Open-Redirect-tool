@@ -2,7 +2,7 @@ import optparse
 import colorama
 from colorama import Fore, Style
 from goop import goop
-from itertools import imap
+
 
 def search(domain, dorks, verbios):
     banner()
@@ -18,7 +18,7 @@ def search(domain, dorks, verbios):
         if result:
             for each in result: 
                 final.append(str(result[each]['url']))
-        if verbios:
+        if verbios and not result:
             print(Fore.RED+"[-] No result for this dork >> "+dork)
     print(Fore.GREEN+"[+] Scanning Done \n")
     dorks.close()
@@ -58,14 +58,16 @@ def banner():
               `----'              ---`-'                          
                                                                   """
     twitter="twitter:@isch1zo"
+    new_line="----------------------------------------------------------------------------------------------------"
     print(Fore.BLUE+"\n"+schizo)
     print(Fore.RED+twitter)
-    
+    print(Fore.WHITE+new_line)
+
 def get_arguments():
     parser = optparse.OptionParser()
     parser.add_option("-d", "--domain", dest="domain", help="Enter Target Domain")
     parser.add_option("-f", "--dorks", dest="dorks", help="Enter Dorks")
-    parser.add_option("-v", "--verbose", dest="verbose", help='Print more data', action='store_true')
+    parser.add_option("-v", "--verbose", dest="verbose", help="Print more data", action="store_true")
     #Verbose
     (options, arguments) = parser.parse_args()
     if not options.domain:
@@ -76,6 +78,6 @@ def get_arguments():
         return options
 
 
-cookies = "c_user=100049340122491; xs=16%3A3HnCwkJVltq31g%3A2%3A1585934121%3A-1%3A-1;"
+cookies = "c_user=XXXXX; xs=XXXXX;"
 options = get_arguments()
 search(options.domain, options.dorks, options.verbose)
