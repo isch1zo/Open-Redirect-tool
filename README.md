@@ -16,7 +16,7 @@ pip install goop
 # Download and install:
 ```
 $ git clone https://github.com/dbis0/Open-Redirect-tool
-$ cd Open-Redirect-tool
+$ cd Open-Redirect-tool/
 - Open the file open_redirect.py and write inside this line:
 ```
 cookie = 'YOUR FACEBOOK COOKIES HERE'
@@ -43,25 +43,101 @@ Note: If the "xs" cookie does not appear, [follow these steps](https://gist.gith
 ## Menu
 
 ```
-$ python uDork.py -h
-       _____             _    
-      |  __ \           | |   
- _   _| |  | | ___  _ __| | __
-| | | | |  | |/ _ \| '__| |/ /
-| |_| | |__| | (_) | |  |   < 
- \__,_|_____/ \___/|_|  |_|\_\ v.2020.03.13
-		by M3n0sD0n4ld - (@David_Uton)
+$ python open_redirect.py -h
 
+                        ,---,                                     
+                      ,--.' |      ,--,                           
+                      |  |  :    ,--.'|          ,----,   ,---.   
+  .--.--.             :  :  :    |  |,         .'   .`|  '   ,'\  
+ /  /    '     ,---.  :  |  |,--.`--'_      .'   .'  .' /   /   | 
+|  :  /`./    /     \ |  :  '   |,' ,'|   ,---, '   ./ .   ; ,. : 
+|  :  ;_     /    / ' |  |   /' :'  | |   ;   | .'  /  '   | |: : 
+ \  \    `. .    ' /  '  :  | | ||  | :   `---' /  ;--,'   | .; : 
+  `----.   '   ; :__  |  |  ' | :'  : |__   /  /  / .`||   :    | 
+ /  /`--'  /'   | '.'||  :  :_:,'|  | '.'|./__;     .'  \   \  /  
+'--'.     / |   :    :|  | ,'    ;  :    ;;   |  .'      `----'   
+  `--'---'   \   \  / `--''      |  ,   / `---'                   
+              `----'              ---`-'                          
+                                                                  
+twitter:@isch1zo
 ----------------------------------------------------------------------------------------------------
-usage: uDork.py [-h] [-d DOMAIN] [-f FILE] [-v verbose]
+Usage: open_redirect.py [options]
 
-optional arguments:
+Options:
   -h, --help            show this help message and exit
-  -d DOMAIN, --domain Domain or IP address.
-  -f FILE, --file FILE  Use your own personalized list of dorks.
-  -v VERBOSE, --verbose used to find which dorks are not successed 
+  -d DOMAIN, --domain=DOMAIN
+                        Enter Target Domain
+  -f DORKS, --dorks=DORKS
+                        Enter Dorks
+  -v, --verbose         Print more data
 ```
+## Scan
+```
+# python open_redirect.py -d [Target Domain] -f dorks.txt
 
+                        ,---,                                     
+                      ,--.' |      ,--,                           
+                      |  |  :    ,--.'|          ,----,   ,---.   
+  .--.--.             :  :  :    |  |,         .'   .`|  '   ,'\  
+ /  /    '     ,---.  :  |  |,--.`--'_      .'   .'  .' /   /   | 
+|  :  /`./    /     \ |  :  '   |,' ,'|   ,---, '   ./ .   ; ,. : 
+|  :  ;_     /    / ' |  |   /' :'  | |   ;   | .'  /  '   | |: : 
+ \  \    `. .    ' /  '  :  | | ||  | :   `---' /  ;--,'   | .; : 
+  `----.   '   ; :__  |  |  ' | :'  : |__   /  /  / .`||   :    | 
+ /  /`--'  /'   | '.'||  :  :_:,'|  | '.'|./__;     .'  \   \  /  
+'--'.     / |   :    :|  | ,'    ;  :    ;;   |  .'      `----'   
+  `--'---'   \   \  / `--''      |  ,   / `---'                   
+              `----'              ---`-'                          
+----------------------------------------------------------------------------------------------------                                                                 
+twitter:@isch1zo
+[*] Scanning is established, it may takes a minutes ...
+
+
+[+] Trying: site:[Target Domain] AND inurl:url
+
+[+] Trying: site:[Target Domain] AND inurl:/?page=
+....
+
+[+] Scanning Done 
+
+[1] Interesting one >> http://[Target Domain]/redirect.php%3Furl%3Dhttp%253A%252F%252F***%252F***
+
+[2] Interesting one >> http://[Target Domain]/redirect.php%3Furl%3Dhttp%253A%252F%252F***%252F***%252F***
+...
+[25] https://[Target Domain]/***/***.html
+```
+## Scan with verbose
+```
+# python open_redirect.py -d [Target Domain] -f dorks.txt -v
+
+                        ,---,                                     
+                      ,--.' |      ,--,                           
+                      |  |  :    ,--.'|          ,----,   ,---.   
+  .--.--.             :  :  :    |  |,         .'   .`|  '   ,'\  
+ /  /    '     ,---.  :  |  |,--.`--'_      .'   .'  .' /   /   | 
+|  :  /`./    /     \ |  :  '   |,' ,'|   ,---, '   ./ .   ; ,. : 
+|  :  ;_     /    / ' |  |   /' :'  | |   ;   | .'  /  '   | |: : 
+ \  \    `. .    ' /  '  :  | | ||  | :   `---' /  ;--,'   | .; : 
+  `----.   '   ; :__  |  |  ' | :'  : |__   /  /  / .`||   :    | 
+ /  /`--'  /'   | '.'||  :  :_:,'|  | '.'|./__;     .'  \   \  /  
+'--'.     / |   :    :|  | ,'    ;  :    ;;   |  .'      `----'   
+  `--'---'   \   \  / `--''      |  ,   / `---'                   
+              `----'              ---`-'                          
+----------------------------------------------------------------------------------------------------                                                                  
+twitter:@isch1zo
+[*] Scanning is established, it may takes a minutes ...
+
+
+[+] Trying: site:[Target Domain] AND inurl:url
+
+[+] Trying: site:[Target Domain] AND inurl:/?page=
+
+[-] No result for this dork >> site:[Target Domain] AND inurl:/?page=
+
+[+] Trying: site:[Target Domain] AND inurl:/url?url=
+
+[+] Scanning Done 
+```
 # Thanks:
 
 Many Thanx s0md3v for goop, very good job! https://github.com/s0md3v/goop
