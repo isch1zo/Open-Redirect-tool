@@ -43,7 +43,7 @@ Note: If the "xs" cookie does not appear, [follow these steps](https://gist.gith
 ## Menu
 
 ```
-$ python open_redirect.py -h
+# python open_redirect.py -h
 
                         ,---,                                     
                       ,--.' |      ,--,                           
@@ -61,7 +61,7 @@ $ python open_redirect.py -h
                                                                   
 twitter:@isch1zo
 ----------------------------------------------------------------------------------------------------
-Usage: open_redirect.py [options]
+Usage: open_redirectGIT.py [options]
 
 Options:
   -h, --help            show this help message and exit
