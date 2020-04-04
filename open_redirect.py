@@ -5,7 +5,6 @@ from goop import goop
 
 
 def search(domain, dorks, verbios):
-    banner()
     domain = domain
     dorks = open(dorks, "r")
     payloads = dorks.readlines()
@@ -64,11 +63,11 @@ def banner():
     print(Fore.WHITE+new_line)
 
 def get_arguments():
+    banner()
     parser = optparse.OptionParser()
     parser.add_option("-d", "--domain", dest="domain", help="Enter Target Domain")
     parser.add_option("-f", "--dorks", dest="dorks", help="Enter Dorks")
     parser.add_option("-v", "--verbose", dest="verbose", help="Print more data", action="store_true")
-    #Verbose
     (options, arguments) = parser.parse_args()
     if not options.domain:
         parser.error("[-] Please specify a domain, use --help for more info.")
