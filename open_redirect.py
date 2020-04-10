@@ -1,8 +1,10 @@
 import optparse
 import colorama
+import requests
+import urllib
+from urlparse import urlparse 
 from colorama import Fore, Style
 from goop import goop
-
 
 def search(domain, dorks, verbios):
     domain = domain
@@ -38,8 +40,20 @@ def CheckInterest(checkit):
     white_list = ['=http','%3dhttp','%3dhttps','=https','%3D%2F','=/']
     for i in white_list:
         if i.lower() in checkit.lower():
+            checkVuln(checkit)
             return True
     return False
+
+def checkVuln(Interst):
+    pre = urllib.unquote(Interst)
+    vuln = urllib.unquote(pre)
+    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
+    r = requests.get(vuln, headers=headers)
+    original = urlparse(vuln).netloc
+    actual = urlparse(r.url).netloc
+    if(r.status_code == 200 and (vuln != r.url)):
+        print(Fore.RED+'Mostly Vulnerable !!!! >>>>>'+vuln)
+        print(Fore.RED+'cuz it comes from '+original+' goes to --> '+actual+"\n")
 
 def banner():
     schizo="""                        ,---,                                     
@@ -68,6 +82,7 @@ def get_arguments():
     parser.add_option("-d", "--domain", dest="domain", help="Enter Target Domain")
     parser.add_option("-f", "--dorks", dest="dorks", help="Enter Dorks")
     parser.add_option("-v", "--verbose", dest="verbose", help="Print more data", action="store_true")
+    #Verbose
     (options, arguments) = parser.parse_args()
     if not options.domain:
         parser.error("[-] Please specify a domain, use --help for more info.")
@@ -77,6 +92,6 @@ def get_arguments():
         return options
 
 
-cookies = "c_user=XXXXX; xs=XXXXX;"
+cookies = "c_user=XXXXXXXXXXXXXXX; xs=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX;"
 options = get_arguments()
 search(options.domain, options.dorks, options.verbose)
