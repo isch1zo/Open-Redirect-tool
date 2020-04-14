@@ -8,9 +8,9 @@
 
 open redirect is a script written in Python that uses advanced Google search techniques to obtain urls that very often has open redirect vulnerablity
 
-# You need to have goop installed
+# You may need to install some python libraries
 ```
-pip install goop
+pip install -r requirements.txt
 ```
 
 # Download and install:
